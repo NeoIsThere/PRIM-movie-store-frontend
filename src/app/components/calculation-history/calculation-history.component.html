@@ -1,0 +1,18 @@
+<div class="root center">
+  <div class="history-container center">
+    <div class="banner">
+      <div class="center"></div>
+      <div class="title" style="flex-grow: 4; width: 100%">
+        Previous calculations:
+      </div>
+      <div class="refresh-container">
+        <button (click)="onRefreshClick()">Refresh</button>
+      </div>
+    </div>
+    <div class="calculations-list center">
+      <div *ngFor="let calculation of calculations" class="calculation">
+        {{ calculation.equation }}
+      </div>
+    </div>
+  </div>
+</div>

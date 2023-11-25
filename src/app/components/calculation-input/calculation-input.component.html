@@ -1,0 +1,15 @@
+<div class="center">
+  <div class="label">Enter a calculation:</div>
+  <div class="input-button-container">
+    <div class="input-container">
+      <input
+        [(ngModel)]="calculation"
+        #ctrl="ngModel"
+        id="calculation"
+        type="text"
+      />
+    </div>
+    <div><button type="submit" (click)="onGoClick()">Go</button></div>
+  </div>
+  <div class="answer">{{ answer }}</div>
+</div>
