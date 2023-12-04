@@ -30,6 +30,7 @@ export class HttpClientService {
         ...Constants.HTTP_RESPONSE_TYPE_TEXT,
       };
     }
+    console.log("posting to: " + Constants.API_BASE_URL + relativeUrl)
     return this.httpClient
       .post<any>(Constants.API_BASE_URL + relativeUrl, body, options)
       .pipe(
