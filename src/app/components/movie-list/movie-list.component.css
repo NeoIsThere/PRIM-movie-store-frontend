@@ -1,0 +1,38 @@
+.movies-list {
+  display: flex;
+  flex-direction: row;
+  column-gap: 50px;
+  row-gap: 50px;
+  flex-wrap: wrap;
+}
+
+.movie {
+  width: 175px;
+}
+
+.poster-container {
+  height: 265px;
+  margin-bottom: 10px;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.movie-title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 200;
+  height: 45px;
+  overflow-y: auto;
+}
+
+.icon-container {
+  text-align: center;
+}
+
+.remove-icon {
+  color: rgb(82, 7, 7);
+}

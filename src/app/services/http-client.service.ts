@@ -1,6 +1,7 @@
 import {
   HttpClient,
   HttpErrorResponse,
+  HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { throwError } from 'rxjs';
@@ -11,28 +12,43 @@ import * as Constants from 'src/app/constants';
   providedIn: 'root',
 })
 export class HttpClientService {
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient) {}
+
+  getHeaders() {
+    return new HttpHeaders()
+      .set('withCredentials', 'true')
+      .set('Content-Type', 'application/json');
+  }
+
+  getHeadersForResponseTypeText() {
+    return this.getHeaders().set('responseType', 'text');
   }
 
   public post(
     relativeUrl: string,
     body: any,
-    isResponseTypeText: boolean = true
   ) {
-    let options = {
-      ...Constants.HTTP_WITH_CREDENTIAL_OPTION,
-      ...Constants.HTTP_CONTENT_TYPE_JSON,
-    };
-
-    if (isResponseTypeText) {
-      options = {
-        ...options,
-        ...Constants.HTTP_RESPONSE_TYPE_TEXT,
-      };
-    }
-    console.log("posting to: " + Constants.API_BASE_URL + relativeUrl)
     return this.httpClient
-      .post<any>(Constants.API_BASE_URL + relativeUrl, body, options)
+      .post<any>(Constants.API_BASE_URL + relativeUrl, body, {
+        headers: this.getHeaders(),
+      })
+      .pipe(
+        catchError((err) => {
+          //passing the function directly (i.e., handleError) prevents from being able to use this therefore this.router is undefined
+          return this.handleError(err);
+        })
+      );
+  }
+
+  public postResponseTypeText(
+    relativeUrl: string,
+    body: any,
+  ) {
+    this.getHeadersForResponseTypeText();
+    return this.httpClient
+      .post(Constants.API_BASE_URL + relativeUrl, body, {
+        responseType: 'text',
+      })
       .pipe(
         catchError((err) => {
           //passing the function directly (i.e., handleError) prevents from being able to use this therefore this.router is undefined
@@ -104,17 +120,16 @@ export class HttpClientService {
       };
     }
 
-    return this.httpClient.get<any>(Constants.API_BASE_URL + relativeUrl, options).pipe(
-      catchError((err) => {
-        return this.handleError(err);
-      })
-    );
+    return this.httpClient
+      .get<any>(Constants.API_BASE_URL + relativeUrl, options)
+      .pipe(
+        catchError((err) => {
+          return this.handleError(err);
+        })
+      );
   }
 
-  public delete(
-    relativeUrl: string,
-    isResponseTypeText: boolean = true
-  ) {
+  public delete(relativeUrl: string, isResponseTypeText: boolean = true) {
     let options = {
       ...Constants.HTTP_WITH_CREDENTIAL_OPTION,
       ...Constants.HTTP_CONTENT_TYPE_JSON,

@@ -19,3 +19,6 @@ export const HTTP_WITH_CREDENTIAL_OPTION = {
 };
 
 export const API_BASE_URL = 'http://137.194.194.74:30001';
+
+//export const API_BASE_URL = 'http://localhost:8001';
+

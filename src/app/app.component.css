@@ -1,31 +1,54 @@
-.root {
+.root{
+  height: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 14% 85%;
   height: 100vh;
   background: rgb(255, 0, 70);
   background: -moz-linear-gradient(
     225deg,
-    rgba(255, 0, 70, 1) 0%,
-    rgba(205, 0, 255, 1) 100%
+    rgb(255, 81, 0) 0%,
+    rgb(119, 7, 147) 100%
   );
   background: -webkit-linear-gradient(
     225deg,
-    rgba(255, 0, 70, 1) 0%,
-    rgba(205, 0, 255, 1) 100%
+    rgb(255, 81, 0) 0%,
+    rgb(119, 7, 147) 100%
   );
   background: linear-gradient(
     225deg,
-    rgba(255, 0, 70, 1) 0%,
-    rgba(205, 0, 255, 1) 100%
+    rgb(255, 81, 0) 0%,
+    rgb(119, 7, 147) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ff0046",endColorstr="#cd00ff",GradientType=1);
-  padding-top: 50px;
 }
 
-.title{
-    text-align: center;
+.main-title {
+  text-align: center;
 }
 
-.container-1 {
-  display: grid;
-  grid-template-rows: 100px 300px 1fr;
-  height: 100%;
+.main {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  padding: 50px;
+  padding-right: 100px;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.side {
+  height: 100vh;
+  background-color: rgb(72, 72, 72);
+}
+
+.bottom-bar {
+  padding: 5px;
+  font-size: 12px;
+  background-color: rgb(35, 35, 35);
+  text-align: center;
 }

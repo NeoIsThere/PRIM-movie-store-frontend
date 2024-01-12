@@ -1,0 +1,21 @@
+<p *ngIf="!isCartEmpty">Your Cart:</p>
+
+<div>
+  <app-movie-list
+    [movies]="movies"
+    [mode]="MOVIES_LIST_MODE"
+    (removeItemEvent)="onRemoveFromCartClick($event)"
+  ></app-movie-list>
+</div>
+
+<div *ngIf="!isCartEmpty">
+  <p>Cost: {{ totalPrice }}€</p>
+</div>
+
+<div class="payment" *ngIf="!isCartEmpty">
+  <button mat-raised-button color="primary" (click)="onPayClick()">Rent (24h) </button>
+</div>
+
+<div class="payment" *ngIf="isCartEmpty">
+  The cart is empty...
+</div>

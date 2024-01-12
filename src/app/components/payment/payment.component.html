@@ -1,0 +1,45 @@
+<div class="root">
+    <form [formGroup]="form" (ngSubmit)="onPayClick()">
+        <div>
+          <mat-form-field class="form-field margin-bottom" appearance="outline">
+            <mat-label>Card holder</mat-label>
+            <input matInput placeholder="Name" value="" formControlName="name" />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="form-field margin-bottom" appearance="outline">
+            <mat-label>Card number</mat-label>
+            <input
+              matInput
+              placeholder="Number"
+              value=""
+              formControlName="cardNumber"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field class="form-field margin-bottom" appearance="outline">
+            <mat-label>Expiration</mat-label>
+            <input
+              matInput
+              placeholder="Expiration"
+              type="date"
+              value=""
+              formControlName="expirationDate"
+            />
+          </mat-form-field>
+        </div>
+        <div>
+          <button
+            type="submit"
+            class="feedback-button"
+            [disabled]="!form.valid"
+            mat-raised-button
+          >
+            <span>Pay</span>
+          </button>
+        </div>
+      </form>
+      
+</div>
+

@@ -1,0 +1,28 @@
+<div class="root">
+  <div class="movies-list">
+    <div *ngFor="let movie of movies" class="movie">
+      <div class="poster-container">
+        <img class="movie-poster" [src]="movie.imgSrc" />
+      </div>
+      <div class="movie-title">
+        {{ movie.title }}
+      </div>
+      <div class="icon-container">
+        <button
+          mat-icon-button
+          *ngIf="isShoppingMode"
+          (click)="onAddToCartClick(movie._id)"
+        >
+          <mat-icon class="shopping-cart-icon">shopping_cart</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          *ngIf="isCartMode"
+          (click)="onRemoveFromCartClick(movie._id)"
+        >
+          <mat-icon class="remove-icon">close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

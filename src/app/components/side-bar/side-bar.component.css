@@ -1,0 +1,20 @@
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.category {
+  margin-top: 50px;
+}
+
+.icon {
+    transform: scale(1.5);
+}
+
+.main-title{
+  font-size: 25px;
+  cursor: pointer;
+}
