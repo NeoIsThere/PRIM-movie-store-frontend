@@ -7,8 +7,6 @@ export class LocalStorageService {
   constructor() {}
 
   saveData(key: string, value: any) {
-    this.removeData(key);
-    console.log(this.getData(key));
     localStorage.setItem(key, JSON.stringify(value));
   }
 

@@ -27,10 +27,9 @@ export class CatalogComponent implements OnInit {
   onAddToCartClick(id: string) {
     let movies = this.localStorageService.getData('moviesIDs');
     if (movies) {
-      if (movies.find((mov: Movie) => mov._id == id)) {
-        return;
+      if (movies.indexOf(id) < 0) {
+        movies.push(id);
       }
-      movies.push(id);
     } else {
       movies = [id];
     }
