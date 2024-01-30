@@ -11,7 +11,7 @@ export class AppComponent {
   
 
   constructor(){
-    
+    console.log("app v.1.00")
   }
 
 }
